@@ -1,0 +1,23 @@
+<view class="product-card" bindtap="onTap">
+  <image class="product-image" src="{{product.cover_image || '/assets/default-product.png'}}" mode="aspectFill" />
+  <view class="product-info">
+    <view class="product-name">{{product.name}}</view>
+    <view class="product-desc">{{product.description || '自然好味，从田间到舌尖'}}</view>
+    <view class="product-bottom">
+      <view class="price-section">
+        <text class="currency">¥</text>
+        <text class="price">{{product.price}}</text>
+        <text class="original-price" wx:if="{{product.original_price}}">¥{{product.original_price}}</text>
+      </view>
+      <view class="cart-btn" catchtap="onAddCart">
+        <text class="cart-icon">+</text>
+      </view>
+    </view>
+    <view class="product-stock" wx:if="{{product.stock <= 0}}">
+      <text class="sold-out">已售罄</text>
+    </view>
+    <view class="product-stock" wx:elif="{{product.stock <= 10}}">
+      <text class="low-stock">仅剩{{product.stock}}件</text>
+    </view>
+  </view>
+</view>

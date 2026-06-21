@@ -1,0 +1,91 @@
+<!-- pages/product/index.wxml -->
+<view class="page" wx:if="{{!loading && product}}">
+  <!-- 商品图 -->
+  <swiper class="product-swiper" indicator-dots circular bindchange="onImageChange" current="{{activeImageIndex}}">
+    <swiper-item wx:for="{{images}}" wx:key="index">
+      <image src="{{item}}" mode="aspectFill" class="product-image" bindtap="previewImages" data-current="{{index}}" />
+    </swiper-item>
+  </swiper>
+  <view class="image-indicator">{{activeImageIndex + 1}}/{{images.length}}</view>
+
+  <!-- 价格信息 -->
+  <view class="price-section card">
+    <view class="price-row flex-between">
+      <view>
+        <text class="price price-large">¥{{product.price}}</text>
+        <text class="price-original" wx:if="{{product.original_price}}">¥{{product.original_price}}</text>
+      </view>
+      <text class="stock-tag tag tag-green">正品保障</text>
+    </view>
+    <view class="sales-row">
+      <text class="sales">销量 {{product.sales || 0}}</text>
+      <text class="stock">库存 {{product.stock}}</text>
+    </view>
+  </view>
+
+  <!-- 商品名称 -->
+  <view class="name-section card">
+    <text class="product-name">{{product.name}}</text>
+  </view>
+
+  <!-- 商品描述 -->
+  <view class="desc-section card" wx:if="{{product.description}}">
+    <view class="section-title">商品详情</view>
+    <rich-text class="description" nodes="{{product.description}}"></rich-text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar safe-area-bottom">
+    <view class="action-left">
+      <view class="action-icon" bindtap="goHome">
+        <image src="/assets/icons/home.png" />
+        <text>首页</text>
+      </view>
+      <view class="action-icon" bindtap="goCart">
+        <image src="/assets/icons/cart.png" />
+        <text>购物车</text>
+        <view class="cart-badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
+      </view>
+    </view>
+    <view class="action-right">
+      <button class="btn-secondary action-btn" bindtap="onAddToCart">加入购物车</button>
+      <button class="btn-primary action-btn" bindtap="onBuyNow">立即购买</button>
+    </view>
+  </view>
+
+  <!-- 数量选择弹窗 -->
+  <view class="quantity-modal" wx:if="{{showQuantityModal}}" bindtap="closeQuantityModal">
+    <view class="quantity-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">选择数量</text>
+        <view class="close-btn" bindtap="closeQuantityModal">✕</view>
+      </view>
+      <view class="modal-body">
+        <view class="product-summary">
+          <image src="{{product.main_image}}" class="product-thumb" />
+          <view class="product-info">
+            <text class="product-name-small">{{product.name}}</text>
+            <text class="product-price">¥{{product.price}}</text>
+          </view>
+        </view>
+        <view class="quantity-selector">
+          <text class="label">数量</text>
+          <view class="qty-btns">
+            <button class="qty-btn" bindtap="changeQuantity" data-type="sub" disabled="{{quantity <= 1}}">-</button>
+            <input class="qty-input" type="number" value="{{quantity}}" disabled />
+            <button class="qty-btn" bindtap="changeQuantity" data-type="add" disabled="{{quantity >= product.stock}}">+</button>
+          </view>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="btn-primary confirm-btn" bindtap="confirmQuantity">
+          {{actionMode === 'cart' ? '加入购物车' : '立即购买'}}
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="loading-state" wx:if="{{loading}}">
+  <text>加载中...</text>
+</view>

@@ -1,0 +1,206 @@
+/* pages/address/index.wxss */
+
+.page {
+  padding-bottom: 120rpx;
+}
+
+/* 地址列表 */
+.address-list {
+  padding: 16rpx;
+}
+
+.address-item {
+  margin-bottom: 16rpx;
+  padding: 24rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  position: relative;
+}
+
+.address-item.default {
+  border: 2rpx solid var(--primary-color);
+}
+
+.address-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.address-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.address-phone {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.default-tag {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  margin-left: 8rpx;
+}
+
+.address-detail {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16rpx;
+}
+
+.address-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 32rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid var(--border-color);
+}
+
+.action-btn {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.action-btn.primary {
+  color: var(--primary-color);
+}
+
+.action-btn.danger {
+  color: var(--danger-color);
+}
+
+/* 空状态 */
+.empty-state {
+  padding-top: 200rpx;
+}
+
+/* 底部按钮 */
+.footer-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 24rpx;
+  background-color: #fff;
+  border-top: 1rpx solid var(--border-color);
+  padding-bottom: calc(20rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+.add-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+}
+
+/* 弹窗样式 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 24rpx 24rpx 0 0;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx;
+  border-bottom: 1rpx solid var(--border-color);
+  position: relative;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.modal-close {
+  position: absolute;
+  right: 32rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36rpx;
+  color: var(--text-muted);
+  padding: 8rpx;
+}
+
+.modal-body {
+  padding: 32rpx;
+}
+
+.form-item {
+  margin-bottom: 32rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+}
+
+.form-input {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 24rpx;
+  background-color: var(--light-gray);
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 160rpx;
+  padding: 20rpx 24rpx;
+  background-color: var(--light-gray);
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.form-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-footer {
+  padding: 24rpx 32rpx 32rpx;
+  padding-bottom: calc(32rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+}

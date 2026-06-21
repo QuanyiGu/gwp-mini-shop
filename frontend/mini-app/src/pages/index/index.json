@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "GWP小店",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "product-card": "../../components/product-card/product-card",
+    "empty-state": "../../components/empty-state/empty-state",
+    "loading-spinner": "../../components/loading-spinner/loading-spinner"
+  }
+}

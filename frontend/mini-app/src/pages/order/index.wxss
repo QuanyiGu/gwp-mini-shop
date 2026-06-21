@@ -1,0 +1,152 @@
+/* pages/order/index.wxss */
+
+/* 状态 Tab */
+.status-tabs {
+  background-color: #fff;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tab-item {
+  display: inline-block;
+  padding: 24rpx 32rpx;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.tab-item.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48rpx;
+  height: 4rpx;
+  background-color: var(--primary-color);
+  border-radius: 2rpx;
+}
+
+/* 订单列表 */
+.order-list {
+  padding: 16rpx;
+}
+
+.order-card {
+  margin-bottom: 16rpx;
+  padding: 0;
+  overflow: hidden;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.order-no {
+  font-size: 24rpx;
+  color: var(--text-muted);
+}
+
+.status-pending {
+  background-color: #fff7e6;
+  color: #fa8c16;
+}
+
+.status-paid {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+.status-shipped {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.status-completed {
+  background-color: var(--light-gray);
+  color: var(--text-secondary);
+}
+
+.status-cancelled {
+  background-color: #fff1f0;
+  color: var(--danger-color);
+}
+
+/* 订单商品 */
+.order-items {
+  padding: 16rpx 24rpx;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  gap: 16rpx;
+}
+
+.item-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  background-color: var(--light-gray);
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120rpx;
+}
+
+.item-name {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.item-qty {
+  font-size: 24rpx;
+  color: var(--text-muted);
+}
+
+.item-price {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* 订单底部 */
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  border-top: 1rpx solid var(--border-color);
+}
+
+.order-time {
+  font-size: 22rpx;
+  color: var(--text-muted);
+}
+
+.order-total {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.order-total .price {
+  font-size: 28rpx;
+  margin-left: 8rpx;
+}

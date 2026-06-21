@@ -1,0 +1,177 @@
+/* pages/orderDetail/index.wxss */
+
+/* 地址区域 */
+.address-section {
+  background-color: #fff;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.address-info {
+  flex: 1;
+  padding-right: 16rpx;
+}
+
+.address-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.address-detail {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.address-empty {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text-muted);
+}
+
+.arrow {
+  font-size: 28rpx;
+  color: var(--text-muted);
+}
+
+/* 商品列表 */
+.goods-section {
+  padding: 24rpx;
+}
+
+.goods-item {
+  display: flex;
+  gap: 16rpx;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.goods-item:last-child {
+  border-bottom: none;
+}
+
+.goods-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  background-color: var(--light-gray);
+}
+
+.goods-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-name {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.goods-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goods-qty {
+  font-size: 26rpx;
+  color: var(--text-muted);
+}
+
+/* 选项行 */
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx;
+}
+
+.option-label {
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+/* 输入行 */
+.input-row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  width: 160rpx;
+  flex-shrink: 0;
+}
+
+.input-field {
+  flex: 1;
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+/* 价格明细 */
+.price-detail {
+  padding: 24rpx;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.price-row:last-child {
+  border-top: 1rpx solid var(--border-color);
+  margin-top: 12rpx;
+  padding-top: 24rpx;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* 底部提交栏 */
+.submit-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #fff;
+  border-top: 1rpx solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+
+.submit-left {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
+}
+
+.submit-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.submit-btn {
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 48rpx;
+  border-radius: 36rpx;
+  font-size: 28rpx;
+}

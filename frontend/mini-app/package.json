@@ -1,0 +1,12 @@
+{
+  "name": "gwp-shop-miniprogram",
+  "version": "1.0.0",
+  "description": "GWP小店 - 微信小程序",
+  "scripts": {
+    "dev": "echo '请使用微信开发者工具打开项目'",
+    "build": "echo '请使用微信开发者工具进行上传'"
+  },
+  "keywords": ["wechat", "miniprogram", "e-commerce"],
+  "author": "GWP Team",
+  "license": "MIT"
+}

@@ -1,0 +1,96 @@
+<!-- pages/coupon/index.wxml -->
+<view class="container">
+  <!-- 顶部标签栏 -->
+  <view class="tabs">
+    <view 
+      wx:for="{{tabs}}" 
+      wx:key="key"
+      class="tab-item {{activeTab === item.key ? 'active' : ''}}"
+      data-key="{{item.key}}"
+      bindtap="onTabChange"
+    >
+      {{item.text}}
+    </view>
+  </view>
+
+  <!-- 领取优惠券按钮 -->
+  <view class="receive-btn" bindtap="onShowReceive">
+    <text class="icon">+</text>
+    <text>领取优惠券</text>
+  </view>
+
+  <!-- 优惠券列表 -->
+  <view class="coupon-list" wx:if="{{!loading}}">
+    <view wx:if="{{couponList.length === 0}}" class="empty">
+      <image class="empty-icon" src="/images/empty-coupon.png" mode="aspectFit" />
+      <text class="empty-text">
+        {{activeTab === 'available' ? '暂无可用优惠券' : activeTab === 'used' ? '暂无已使用优惠券' : '暂无已过期优惠券'}}
+      </text>
+      <button class="empty-btn" bindtap="onShowReceive" wx:if="{{activeTab === 'available'}}">
+        去领取
+      </button>
+    </view>
+
+    <view wx:for="{{couponList}}" wx:key="id" class="coupon-item {{activeTab !== 'available' ? 'disabled' : ''}}" data-coupon="{{item}}" bindtap="onUseCoupon">
+      <!-- 左侧：金额区域 -->
+      <view class="coupon-left">
+        <view class="amount">
+          <text class="symbol">¥</text>
+          <text class="value">{{item.discount}}</text>
+        </view>
+        <view class="condition" wx:if="{{item.min_amount > 0}}">
+          满{{item.min_amount}}元可用
+        </view>
+        <view class="condition" wx:else>
+          无门槛
+        </view>
+      </view>
+
+      <!-- 中间：分割线 -->
+      <view class="coupon-divider">
+        <view class="circle top"></view>
+        <view class="line"></view>
+        <view class="circle bottom"></view>
+      </view>
+
+      <!-- 右侧：信息区域 -->
+      <view class="coupon-right">
+        <view class="coupon-name">{{item.name || '店铺优惠券'}}</view>
+        <view class="coupon-time">
+          有效期至 {{item.expires_at ? item.expires_at.substring(0, 10) : '长期有效'}}
+        </view>
+        <view class="coupon-status">
+          <text wx:if="{{activeTab === 'available'}}" class="status-usable">立即使用</text>
+          <text wx:if="{{activeTab === 'used'}}" class="status-used">已使用</text>
+          <text wx:if="{{activeTab === 'expired'}}" class="status-expired">已过期</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 领取优惠券弹窗 -->
+  <view class="modal-mask" wx:if="{{showReceiveModal}}" bindtap="onCloseReceive">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-title">领取优惠券</view>
+      <view class="modal-body">
+        <input 
+          class="code-input" 
+          placeholder="请输入优惠券兑换码" 
+          value="{{receiveCode}}"
+          bindinput="onCodeInput"
+          maxlength="20"
+          placeholder-style="color: #999"
+        />
+      </view>
+      <view class="modal-footer">
+        <button class="btn btn-cancel" bindtap="onCloseReceive">取消</button>
+        <button class="btn btn-confirm" bindtap="onReceive">确认领取</button>
+      </view>
+    </view>
+  </view>
+</view>

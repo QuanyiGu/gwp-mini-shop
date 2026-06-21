@@ -1,0 +1,68 @@
+<!-- pages/index/index.wxml -->
+<view class="page">
+  <!-- 搜索栏 -->
+  <view class="search-bar" bindtap="onSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-placeholder">搜索商品</text>
+  </view>
+  
+  <!-- 轮播图 -->
+  <swiper class="banner-swiper" indicator-dots autoplay circular interval="4000">
+    <swiper-item wx:for="{{banners}}" wx:key="id" bindtap="goBanner" data-item="{{item}}">
+      <view class="banner-item">
+        <image class="banner-image" src="{{item.image}}" mode="aspectFill" wx:if="{{item.image}}" />
+        <view class="banner-text" wx:else>
+          <text class="banner-title">{{item.title}}</text>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  
+  <!-- 生长状态 Banner -->
+  <view class="growth-banner" wx:if="{{growthStatus}}">
+    <view class="growth-title">🌱 {{growthStatus.title}}</view>
+    <view class="growth-content">{{growthStatus.content}}</view>
+  </view>
+  
+  <!-- 分类导航 -->
+  <scroll-view class="category-scroll" scroll-x enable-flex>
+    <view class="category-list">
+      <view 
+        class="category-item {{activeCategory === 0 ? 'active' : ''}}" 
+        bindtap="onCategoryChange" 
+        data-id="0"
+      >
+        <text class="category-emoji">🏠</text>
+        <text>全部</text>
+      </view>
+      <view 
+        wx:for="{{categories}}" 
+        wx:key="id"
+        class="category-item {{activeCategory === item.id ? 'active' : ''}}"
+        bindtap="onCategoryChange"
+        data-id="{{item.id}}"
+      >
+        <text class="category-emoji">{{item.emoji || '📦'}}</text>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  
+  <!-- 商品列表 -->
+  <loading-spinner show="{{loading}}" text="商品加载中..." />
+  
+  <view class="product-grid" wx:if="{{!loading && products.length > 0}}">
+    <view class="product-item" wx:for="{{products}}" wx:key="id">
+      <product-card product="{{item}}" bind:cartUpdated="updateCartCount" />
+    </view>
+  </view>
+  
+  <!-- 空状态 -->
+  <empty-state 
+    wx:if="{{!loading && products.length === 0}}" 
+    emoji="🍎" 
+    text="暂无商品，敬请期待"
+    actionText="刷新试试"
+    bind:action="onRefresh"
+  />
+</view>

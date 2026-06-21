@@ -1,0 +1,76 @@
+<!-- pages/user/index.wxml -->
+<view class="page">
+  <!-- 用户信息头部 -->
+  <view class="user-header">
+    <view class="user-info" bindtap="onLogin">
+      <view class="avatar-wrapper">
+        <text class="avatar-emoji">{{userInfo ? '👤' : '🔐'}}</text>
+      </view>
+      <view class="user-text">
+        <text class="nickname">{{userInfo ? userInfo.nickname || '微信用户' : '点击登录'}}</text>
+        <text class="uid" wx:if="{{userInfo && userInfo.uid}}">UID: {{userInfo.uid}}</text>
+      </view>
+      <text class="arrow">></text>
+    </view>
+  </view>
+  
+  <!-- 订单入口 -->
+  <view class="order-section">
+    <view class="section-header">
+      <text class="section-title">我的订单</text>
+      <view class="section-more" bindtap="goOrderList" data-status="">
+        <text>全部订单</text>
+        <text class="more-arrow">></text>
+      </view>
+    </view>
+    <view class="order-status-list">
+      <view class="status-item" bindtap="goOrderList" data-status="0">
+        <view class="status-icon-wrapper">
+          <text class="status-icon">💳</text>
+          <view class="badge" wx:if="{{orderStats.pending > 0}}">{{orderStats.pending}}</view>
+        </view>
+        <text class="status-text">待付款</text>
+      </view>
+      <view class="status-item" bindtap="goOrderList" data-status="1">
+        <view class="status-icon-wrapper">
+          <text class="status-icon">📦</text>
+          <view class="badge" wx:if="{{orderStats.paid > 0}}">{{orderStats.paid}}</view>
+        </view>
+        <text class="status-text">待发货</text>
+      </view>
+      <view class="status-item" bindtap="goOrderList" data-status="2">
+        <view class="status-icon-wrapper">
+          <text class="status-icon">🚚</text>
+          <view class="badge" wx:if="{{orderStats.shipped > 0}}">{{orderStats.shipped}}</view>
+        </view>
+        <text class="status-text">待收货</text>
+      </view>
+      <view class="status-item" bindtap="goOrderList" data-status="3">
+        <view class="status-icon-wrapper">
+          <text class="status-icon">✅</text>
+          <view class="badge" wx:if="{{orderStats.completed > 0}}">{{orderStats.completed}}</view>
+        </view>
+        <text class="status-text">已完成</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 菜单列表 -->
+  <view class="menu-section">
+    <view wx:for="{{menuItems}}" wx:key="label" 
+      class="menu-item" 
+      bindtap="goMenuItem" 
+      data-path="{{item.path}}"
+      data-action="{{item.action}}"
+    >
+      <text class="menu-icon">{{item.icon}}</text>
+      <text class="menu-label">{{item.label}}</text>
+      <text class="menu-arrow">></text>
+    </view>
+  </view>
+  
+  <!-- 退出登录 -->
+  <view class="logout-btn" wx:if="{{userInfo}}" bindtap="onLogout">
+    退出登录
+  </view>
+</view>
